@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+/**
+ * All tests should pass before project completion!
+ */
 class ItemTest {
 
     //Empty constructor to avoid instantiation.
