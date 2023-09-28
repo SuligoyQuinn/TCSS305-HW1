@@ -1,4 +1,4 @@
-# TCSS305-username-hw1a
+# TCSS305-hw1a
 TCSS 305 Assignment 1a
 
 TCSS 305 C - Charles Bryan
