@@ -1,4 +1,4 @@
-package model;
+package edu.uw.tcss.model;
 
 
 import static org.junit.jupiter.api.Assertions.assertAll;
