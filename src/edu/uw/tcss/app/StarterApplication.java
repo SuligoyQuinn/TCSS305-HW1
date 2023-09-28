@@ -4,8 +4,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author cfb3
- * @version 1.0.0
+ * A driver class for this application.
+ *
+ * @author Charles Bryan
+ * @version Autumn 2023
  */
 public class StarterApplication {
 
