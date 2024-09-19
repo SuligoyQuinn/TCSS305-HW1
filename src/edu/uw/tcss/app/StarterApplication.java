@@ -7,9 +7,15 @@ import java.util.logging.Logger;
  * A driver class for this application.
  *
  * @author Charles Bryan
- * @version Autumn 2023
+ * @version Autumn 2024
  */
 public class StarterApplication {
+
+    // TODO: read and complete all TODOs. Once completed, remove all TODO comments.
+
+    // TODO: Right-click on this file -> Analyze -> Inspect Code : then clean up all warnings
+
+    // TODO: In the file menu, View -> Tool Windows -> TODO
 
     /**
      * A Logger object for all your logging needs.
@@ -29,6 +35,7 @@ public class StarterApplication {
      * @param theArgs the command-line arguments for this program.
      */
     public static void main(final String[] theArgs) {
+        // TODO read, review, then delete the following 4 LOGGER method calls.
         LOGGER.info(() -> "Should you need String concatenation,  "
                 + "use a lambda for lazy evaluation. What's that you ask?");
         LOGGER.info(() -> "What is a magic number you ask?,  "
@@ -36,11 +43,12 @@ public class StarterApplication {
         LOGGER.severe("This is really bad");
         LOGGER.warning("I've got a bad feeling about this");
 
+        // TODO read, review, then delete the following println metyhod call.
         System.out.println("This should not be used unless this is an actual console application!");
     }
 
     public static boolean isBlue(String theInput) {
-        LOGGER.warning("This ins't wrong but it could be better.");
         return theInput.equalsIgnoreCase("BLUE");
     }
+
 }
