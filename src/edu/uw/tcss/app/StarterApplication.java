@@ -1,5 +1,9 @@
 package edu.uw.tcss.app;
 
+import edu.uw.tcss.model.StoreItem;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +53,33 @@ public class StarterApplication {
 
     public static boolean isBlue(String theInput) {
         return theInput.equalsIgnoreCase("BLUE");
+    }
+
+
+
+
+
+
+
+
+
+    public BigDecimal totalPrice(final StoreItem... theItems) {
+//        BigDecimal result = BigDecimal.ZERO;
+//        for(final StoreItem item : theItems) {
+//            result = result.add(item.getPrice());
+//        }
+//        return result;
+
+        return Arrays.stream(theItems)
+                .parallel()
+                .map(StoreItem::getPrice)
+                .reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO);
+
+//        return Arrays.stream(theItems)
+//                .parallel()
+//                .map(StoreItem::getPrice)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
 }
