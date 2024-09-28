@@ -55,31 +55,12 @@ public class StarterApplication {
         return theInput.equalsIgnoreCase("BLUE");
     }
 
+    public static boolean isGreen(String theInput) {
+        return theInput.equalsIgnoreCase("GREEN");
+    }
 
-
-
-
-
-
-
-
-    public BigDecimal totalPrice(final StoreItem... theItems) {
-//        BigDecimal result = BigDecimal.ZERO;
-//        for(final StoreItem item : theItems) {
-//            result = result.add(item.getPrice());
-//        }
-//        return result;
-
-        return Arrays.stream(theItems)
-                .parallel()
-                .map(StoreItem::getPrice)
-                .reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
-
-//        return Arrays.stream(theItems)
-//                .parallel()
-//                .map(StoreItem::getPrice)
-//                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    public static boolean isRed(String theInput){
+        return theInput.equalsIgnoreCase("RED");
     }
 
 }
