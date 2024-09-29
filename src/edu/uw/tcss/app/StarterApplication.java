@@ -55,12 +55,4 @@ public class StarterApplication {
         return theInput.equalsIgnoreCase("BLUE");
     }
 
-    public static boolean isGreen(String theInput) {
-        return theInput.equalsIgnoreCase("GREEN");
-    }
-
-    public static boolean isRed(String theInput){
-        return theInput.equalsIgnoreCase("RED");
-    }
-
 }
