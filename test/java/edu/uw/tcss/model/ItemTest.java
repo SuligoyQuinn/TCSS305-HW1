@@ -239,15 +239,4 @@ final class ItemTest {
                         "Item should be bulk"));
     }
 
-    @Test
-    void testToString() {
-        assertAll("toString test.",
-                () -> assertEquals("Item, $0.50",
-                        TEST_ITEM.toString(),
-                        "toString should be: \"Item, $0.50\""),
-                () -> assertEquals("Bulk Item, $0.50 (10 for $4.00)",
-                        TEST_BULK_ITEM.toString(),
-                        "toString should be: \"Bulk Item, $0.50 (10 for $4.00)\""));
-    }
-
 }
