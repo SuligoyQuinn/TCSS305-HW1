@@ -1,6 +1,5 @@
 package edu.uw.tcss.model;
 
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,13 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
-/**
- * All tests should pass before project completion!
- *
- * @author Charles Bryan
- * @version 1.1
- */
-final class ItemTest {
+class ItemTest {
 
     /**
      * The name of the item used in testing.
@@ -60,13 +53,8 @@ final class ItemTest {
             new StoreItem(BULK_ITEM_NAME, new BigDecimal(ITEM_PRICE),
                     BULK_QUANTITY, new BigDecimal(BULK_PRICE));
 
-    //Empty constructor to avoid instantiation.
-    private ItemTest() {
-        super();
-    }
-
     @Test
-    void testConstructorEmptyItemName() {
+    public final void testConstructorEmptyItemName() {
         assertAll("Item name as empty string to constructors.",
                 () -> assertThrows(IllegalArgumentException.class,
                         () -> new StoreItem("", new BigDecimal(ITEM_PRICE),
@@ -81,107 +69,116 @@ final class ItemTest {
     }
 
     @Test
-    void testConstructorNullItemName() {
+    public final void testConstructorNullItemName() {
         assertAll("Item name as null to constructors.",
                 () -> assertThrows(NullPointerException.class,
                         () -> new StoreItem(null, new BigDecimal(ITEM_PRICE),
                                 BULK_QUANTITY, new BigDecimal(BULK_PRICE)),
-                        "Four arg constructor does not handle null as an argument "
-                                + "to theName properly."),
+                        "Four arg constructor does not handle null as an "
+                                + "argument to theName properly."),
                 () -> assertThrows(NullPointerException.class,
                         () -> new StoreItem(null, new BigDecimal(ITEM_PRICE)),
-                        "Two arg constructor does not handle null as an argument "
-                                + "to theName properly."));
+                        "Two arg constructor does not handle null as an "
+                                + "argument to theName properly."));
 
     }
 
     @Test
-    void testConstructorNegativeItemPrice() {
+    public final void testConstructorNegativeItemPrice() {
         assertAll("Item price as negative value to constructors.",
                 () -> assertThrows(IllegalArgumentException.class,
                         () -> new StoreItem(BULK_ITEM_NAME, new BigDecimal(NEGATIVE_PRICE),
                                 BULK_QUANTITY, new BigDecimal(BULK_PRICE)),
-                        "Four arg constructor does not handle negative value as "
-                                + "an argument to thePrice properly."),
+                        "Four arg constructor does not handle negative value as an "
+                                + "argument to thePrice properly."),
                 () -> assertThrows(IllegalArgumentException.class,
                         () -> new StoreItem(ITEM_NAME, new BigDecimal(NEGATIVE_PRICE)),
-                        "Two arg constructor does not handle negative value as "
-                                + "an argument to thePrice properly."));
+                        "Two arg constructor does not handle negative value as an "
+                                + "argument to thePrice properly."));
 
     }
 
     @Test
-    void testConstructorNullItemPrice() {
+    public final void testConstructorNullItemPrice() {
         assertAll("Item price as null value to constructors.",
                 () -> assertThrows(NullPointerException.class,
                         () -> new StoreItem(BULK_ITEM_NAME, null,
                                 BULK_QUANTITY, new BigDecimal(BULK_PRICE)),
-                        "Four arg constructor does not handle null as an argument "
-                                + "to thePrice properly."),
+                        "Four arg constructor does not handle null as an "
+                                + "argument to thePrice properly."),
                 () -> assertThrows(NullPointerException.class,
                         () -> new StoreItem(ITEM_NAME, null),
-                        "Two arg constructor does not handle null as an argument "
-                                + "to thePrice properly."));
+                        "Two arg constructor does not handle null as an "
+                                + "argument to thePrice properly."));
 
     }
 
     @Test
-    void testConstructorNegativeBulkItemQuantity() {
+    public final void testConstructorNegativeBulkItemQuantity() {
         assertThrows(IllegalArgumentException.class,
                 () -> new StoreItem(BULK_ITEM_NAME, new BigDecimal(ITEM_PRICE),
                         -1, new BigDecimal(BULK_PRICE)),
-                "Four arg constructor does not handle negative value as an argument "
-                        + "to theBulkQuantity properly.");
+                "Four arg constructor does not handle negative value as an "
+                        + "argument to theBulkQuantity properly.");
     }
 
     @Test
-    void testConstructorNullBulkItemPrice() {
-        assertThrows(IllegalArgumentException.class,
+    public final void testConstructorNullBulkItemPrice() {
+        assertThrows(
+                IllegalArgumentException.class,
                 () -> new StoreItem(BULK_ITEM_NAME, new BigDecimal(ITEM_PRICE),
                         BULK_QUANTITY, new BigDecimal(NEGATIVE_PRICE)),
-                "Four arg constructor does not handle negative value as an argument "
-                        + "to theBulkPrice properly.");
+                "Four arg constructor does not handle negative value as an "
+                        + "argument to theBulkPrice properly.");
     }
 
     @Test
-    void testConstructorNegativeBulkItemPrice() {
+    public final void testConstructorNegativeBulkItemPrice() {
         assertThrows(NullPointerException.class,
                 () -> new StoreItem(BULK_ITEM_NAME, new BigDecimal(ITEM_PRICE),
                         BULK_QUANTITY, null),
-                "Four arg constructor does not handle null as an argument to "
-                        + "thePrice properly.");
+                "Four arg constructor does not handle null as an "
+                        + "argument to thePrice properly.");
     }
 
     @Test
-    void testTwoArguemntConstructor() {
+    public final void testTwoArguemntConstructor() {
         assertAll("Two argument constructor test.",
-                () -> assertEquals(ITEM_NAME,
+                () -> assertEquals(
+                        ITEM_NAME,
                         TEST_ITEM.getName(),
                         "Item name should be: " + ITEM_NAME),
-                () -> assertEquals(new BigDecimal(ITEM_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(ITEM_PRICE),
                         TEST_ITEM.getPrice(),
                         "Item Price should be: " + ITEM_PRICE),
-                () -> assertEquals(0,
+                () -> assertEquals(
+                        0,
                         TEST_ITEM.getBulkQuantity(),
                         "Bulk quantity should be: 0"),
-                () -> assertEquals(BigDecimal.ZERO,
+                () -> assertEquals(
+                        BigDecimal.ZERO,
                         TEST_ITEM.getBulkPrice(),
                         "Bulk Price should be: 0"));
     }
 
     @Test
-    void testFourArgumentConstructor() {
+    public final void testFourArgumentConstructor() {
         assertAll("Four argument constructor test.",
-                () -> assertEquals(BULK_ITEM_NAME,
+                () -> assertEquals(
+                        BULK_ITEM_NAME,
                         TEST_BULK_ITEM.getName(),
                         "Item name should be: " + BULK_ITEM_NAME),
-                () -> assertEquals(new BigDecimal(ITEM_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(ITEM_PRICE),
                         TEST_BULK_ITEM.getPrice(),
                         "Item Price should be: " + ITEM_PRICE),
-                () -> assertEquals(BULK_QUANTITY,
+                () -> assertEquals(
+                        BULK_QUANTITY,
                         TEST_BULK_ITEM.getBulkQuantity(),
                         "Bulk quantity should be: " + BULK_QUANTITY),
-                () -> assertEquals(new BigDecimal(BULK_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(BULK_PRICE),
                         TEST_BULK_ITEM.getBulkPrice(),
                         "Bulk Price should be: " + BULK_PRICE));
     }
@@ -189,10 +186,12 @@ final class ItemTest {
     @Test
     void testGetName() {
         assertAll("getName test.",
-                () -> assertEquals(ITEM_NAME,
+                () -> assertEquals(
+                        ITEM_NAME,
                         TEST_ITEM.getName(),
                         "Item name should be: " + ITEM_NAME),
-                () -> assertEquals(BULK_ITEM_NAME,
+                () -> assertEquals(
+                        BULK_ITEM_NAME,
                         TEST_BULK_ITEM.getName(),
                         "Item name should be: " + BULK_ITEM_NAME));
     }
@@ -200,10 +199,12 @@ final class ItemTest {
     @Test
     void testGetPrice() {
         assertAll("getPrice test.",
-                () -> assertEquals(new BigDecimal(ITEM_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(ITEM_PRICE),
                         TEST_BULK_ITEM.getPrice(),
                         "Item Price should be: " + ITEM_PRICE),
-                () -> assertEquals(new BigDecimal(ITEM_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(ITEM_PRICE),
                         TEST_ITEM.getPrice(),
                         "Item Price should be: " + ITEM_PRICE));
     }
@@ -211,10 +212,12 @@ final class ItemTest {
     @Test
     void testGetBulkQuantity() {
         assertAll("getBulkQuantity test.",
-                () -> assertEquals(0,
+                () -> assertEquals(
+                        0,
                         TEST_ITEM.getBulkQuantity(),
                         "Bulk quantity should be: 0"),
-                () -> assertEquals(BULK_QUANTITY,
+                () -> assertEquals(
+                        BULK_QUANTITY,
                         TEST_BULK_ITEM.getBulkQuantity(),
                         "Bulk quantity should be: " + BULK_QUANTITY));
     }
@@ -222,10 +225,12 @@ final class ItemTest {
     @Test
     void testGetBulkPrice() {
         assertAll("getBulkPrice test.",
-                () -> assertEquals(BigDecimal.ZERO,
+                () -> assertEquals(
+                        BigDecimal.ZERO,
                         TEST_ITEM.getBulkPrice(),
                         "Bulk Price should be: 0"),
-                () -> assertEquals(new BigDecimal(BULK_PRICE),
+                () -> assertEquals(
+                        new BigDecimal(BULK_PRICE),
                         TEST_BULK_ITEM.getBulkPrice(),
                         "Bulk Price should be: " + BULK_PRICE));
     }
@@ -233,9 +238,11 @@ final class ItemTest {
     @Test
     void testIsBulk() {
         assertAll("isBulk test.",
-                () -> assertFalse(TEST_ITEM.isBulk(),
+                () -> assertFalse(
+                        TEST_ITEM.isBulk(),
                         "Item should NOT be bulk"),
-                () -> assertTrue(TEST_BULK_ITEM.isBulk(),
+                () -> assertTrue(
+                        TEST_BULK_ITEM.isBulk(),
                         "Item should be bulk"));
     }
 
