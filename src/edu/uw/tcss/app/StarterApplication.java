@@ -1,7 +1,6 @@
 package edu.uw.tcss.app;
 
 import edu.uw.tcss.model.StoreItem;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -13,7 +12,7 @@ import java.util.logging.Logger;
  * @author Charles Bryan
  * @version Autumn 2024
  */
-public class StarterApplication {
+public final class StarterApplication {
 
     // TODO: read and complete all TODOs. Once completed, remove all TODO comments.
 
@@ -33,26 +32,29 @@ public class StarterApplication {
         LOGGER.setLevel(Level.ALL);
     }
 
+    private StarterApplication() {
+        super();
+    }
+
     /**
      * The entry point into this application.
      *
      * @param theArgs the command-line arguments for this program.
      */
-    public static void main(final String[] theArgs) {
-        // TODO read, review, then delete the following 4 LOGGER method calls.
-        LOGGER.info(() -> "Should you need String concatenation,  "
-                + "use a lambda for lazy evaluation. What's that you ask?");
-        LOGGER.info(() -> "What is a magic number you ask?,  "
-                + 1977);
-        LOGGER.severe("This is really bad");
-        LOGGER.warning("I've got a bad feeling about this");
-
-        // TODO read, review, then delete the following println metyhod call.
-        System.out.println("This should not be used unless this is an actual console application!");
+    static void main(final String[] theArgs) {
+        LOGGER.info("This is my first Computer Science course");
+        LOGGER.info(() -> "I have been studying at UWT for two years, "
+                + "this is where I took 142 and 143");
+        LOGGER.info("David Schuessler was my professor for both of those classes");
     }
 
-    public static boolean isBlue(String theInput) {
-        return theInput.equalsIgnoreCase("BLUE");
+    /**
+     * Checks if input string is equal to the string "BLUE".
+     * @param theInput the string to be checked
+     * @return true if input string is "BLUE", false otherwise
+     */
+    public static boolean isBlue(final String theInput) {
+        return "BLUE".equalsIgnoreCase(theInput);
     }
 
 }
