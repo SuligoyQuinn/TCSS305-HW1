@@ -1,8 +1,5 @@
 package edu.uw.tcss.app;
 
-import edu.uw.tcss.model.StoreItem;
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,13 +10,6 @@ import java.util.logging.Logger;
  * @version Autumn 2024
  */
 public final class StarterApplication {
-
-    // TODO: read and complete all TODOs. Once completed, remove all TODO comments.
-
-    // TODO: Right-click on this file -> Analyze -> Inspect Code : then clean up all warnings
-
-    // TODO: In the file menu, View -> Tool Windows -> TODO
-
     /**
      * A Logger object for all your logging needs.
      * You should move away from using System.out.println as your logging/debugging method.

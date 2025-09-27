@@ -3,16 +3,40 @@ package edu.uw.tcss.model;
 
 import java.math.BigDecimal;
 
-
+/**
+ * Creates a StoreItem that has a name and price, as well as the option for bulk pricing.
+ * @author QuinnSuligoy
+ * @version 1.0
+ */
 public final class StoreItem implements Item {
-
-    private String myName;
-    private BigDecimal myPrice;
+    /**
+     * Name of the store item
+     */
+    private final String myName;
+    /**
+     * Price of the store item
+     */
+    private final BigDecimal myPrice;
+    /**
+     * Quantity of the store item that can be bought in bulk, if it is a bulk item
+     */
     private int myBulkQuantity;
+    /**
+     * Price of the store item if bought in bulk
+     */
     private BigDecimal myBulkPrice;
+    /**
+     * Whether the store item is available in bulk or not
+     */
     private boolean myIsBulk;
 
+    /**
+     * Creates a store item using a name and price.
+     * @param theName name of the store item
+     * @param thePrice price of the store item
+     */
     public StoreItem(final String theName, final BigDecimal thePrice) {
+        super();
         if (null == theName || null == thePrice) {
             throw new NullPointerException();
         } else if (theName.isEmpty() || 0 > thePrice.compareTo(BigDecimal.ZERO)) {
@@ -23,41 +47,69 @@ public final class StoreItem implements Item {
         myPrice = thePrice;
     }
 
+    /**
+     * Creates a store item available in bulk using a name, price, bulk quantity, and bulk price.
+     * @param theName name of the store item
+     * @param thePrice price of the store item
+     * @param theBulkQuantity quantity of store item when bought in bulk
+     * @param theBulkPrice price of store item when bought in bulk
+     */
     public StoreItem(final String theName, final BigDecimal thePrice, final int theBulkQuantity, final BigDecimal theBulkPrice) {
+        super();
         if (null == theName || null == thePrice || null == theBulkPrice) {
             throw new NullPointerException();
-        } else if (theName.isEmpty() || 0 > thePrice.compareTo(BigDecimal.ZERO) || 0 >  theBulkQuantity || 0 > theBulkPrice.compareTo(BigDecimal.ZERO)) {
+        } else if (theName.isEmpty() || 0 > thePrice.compareTo(BigDecimal.ZERO) || 0 > theBulkQuantity || 0 > theBulkPrice.compareTo(BigDecimal.ZERO)) {
             throw new IllegalArgumentException();
         }
+
+        myName = theName;
+        myPrice = thePrice;
+        myBulkQuantity = theBulkQuantity;
+        myBulkPrice = theBulkPrice;
+        myIsBulk = true;
     }
 
 
+    @Override
     public String getName() {
-        return null;
+        return myName;
     }
 
 
+    @Override
     public BigDecimal getPrice() {
-        return null;
+        return myPrice;
     }
 
 
+    @Override
     public int getBulkQuantity() {
-        return 0;
+        return myBulkQuantity;
     }
 
 
+    @Override
     public BigDecimal getBulkPrice() {
-        return null;
+        return myBulkPrice;
     }
 
 
+    @Override
     public boolean isBulk() {
-        return false;
+        return myIsBulk;
     }
 
+
+    /**
+     * Returns a string representation of the store item.
+     * @return string representation of the store item
+     */
     public String toString() {
-        return null;
+        String toReturn = myName + " $" +  myPrice;
+        if (myIsBulk) {
+            toReturn += " Bulk: " +  myBulkQuantity + " for $" +   myBulkPrice;
+        }
+        return toReturn;
     }
 
 }
