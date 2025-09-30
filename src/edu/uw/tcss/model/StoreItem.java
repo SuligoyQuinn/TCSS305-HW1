@@ -20,15 +20,15 @@ public final class StoreItem implements Item {
     /**
      * Quantity of the store item that can be bought in bulk, if it is a bulk item
      */
-    private int myBulkQuantity;
+    private final int myBulkQuantity;
     /**
      * Price of the store item if bought in bulk
      */
-    private BigDecimal myBulkPrice;
+    private final BigDecimal myBulkPrice;
     /**
      * Whether the store item is available in bulk or not
      */
-    private boolean myIsBulk;
+    private final boolean myIsBulk;
 
     /**
      * Creates a store item using a name and price.
@@ -45,20 +45,26 @@ public final class StoreItem implements Item {
 
         myName = theName;
         myPrice = thePrice;
+        myBulkQuantity = 0;
+        myBulkPrice = BigDecimal.ZERO;
+        myIsBulk = false;
     }
 
     /**
-     * Creates a store item available in bulk using a name, price, bulk quantity, and bulk price.
+     * Creates a store item available in bulk using a name, price, bulk quantity,
+     * and bulk price.
      * @param theName name of the store item
      * @param thePrice price of the store item
      * @param theBulkQuantity quantity of store item when bought in bulk
      * @param theBulkPrice price of store item when bought in bulk
      */
-    public StoreItem(final String theName, final BigDecimal thePrice, final int theBulkQuantity, final BigDecimal theBulkPrice) {
+    public StoreItem(final String theName, final BigDecimal thePrice,
+                     final int theBulkQuantity, final BigDecimal theBulkPrice) {
         super();
         if (null == theName || null == thePrice || null == theBulkPrice) {
             throw new NullPointerException();
-        } else if (theName.isEmpty() || 0 > thePrice.compareTo(BigDecimal.ZERO) || 0 > theBulkQuantity || 0 > theBulkPrice.compareTo(BigDecimal.ZERO)) {
+        } else if (theName.isEmpty() || 0 > thePrice.compareTo(BigDecimal.ZERO)
+                || 0 > theBulkQuantity || 0 > theBulkPrice.compareTo(BigDecimal.ZERO)) {
             throw new IllegalArgumentException();
         }
 
